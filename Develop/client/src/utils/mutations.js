@@ -44,18 +44,40 @@ export const ADD_USER = gql`
     }
 `;
 
-// export const SAVE_BOOK = gql`
+export const SAVE_BOOK = gql`
+    mutation saveBook($input: bookInput!) {
+        saveBook(input: $input) {
+            _id
+            username
+            email
+            bookCount
+            savedBooks {
+                bookId
+                authors
+                image
+                description
+                title
+                link
+            }
+        }
+    }
+`;
 
-// `;
-
-// export const REMOVE_BOOK = gql`
-
-// `;
-
-// LOGIN_USER will execute the loginUser mutation set up using Apollo Server.
-
-// ADD_USER will execute the addUser mutation.
-
-// SAVE_BOOK will execute the saveBook mutation.
-
-// REMOVE_BOOK will execute the removeBook mutation.
+export const REMOVE_BOOK = gql`
+    mutation removeBook($bookId: String!) {
+        removeBook(bookId: $bookId) {
+            _id
+            username
+            email
+            bookCount
+            savedBooks {
+                bookId
+                authors
+                image
+                description
+                title
+                link
+            }
+        }
+    }
+`;
